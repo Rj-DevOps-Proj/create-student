@@ -23,7 +23,7 @@ jobs:
     runs-on: [self-hosted, linux]
     services:
       postgres:
-        image: postgres:17-alpine
+        image: postgres:19-alpine
         env:
           POSTGRES_USER: student_test
           POSTGRES_PASSWORD: student_test
