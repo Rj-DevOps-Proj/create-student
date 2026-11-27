@@ -16,9 +16,7 @@ def client():
 
     schema = f"test_{uuid.uuid4().hex}"
     with psycopg.connect(database_url, autocommit=True) as connection:
-        connection.execute(
-            sql.SQL("CREATE SCHEMA {}").format(sql.Identifier(schema))
-        )
+        connection.execute(sql.SQL("CREATE SCHEMA {}").format(sql.Identifier(schema)))
 
     isolated_database_url = make_conninfo(
         database_url,
@@ -30,9 +28,7 @@ def client():
             yield test_client
     finally:
         with psycopg.connect(database_url, autocommit=True) as connection:
-            connection.execute(
-                sql.SQL("DROP SCHEMA {} CASCADE").format(sql.Identifier(schema))
-            )
+            connection.execute(sql.SQL("DROP SCHEMA {} CASCADE").format(sql.Identifier(schema)))
 
 
 def test_student_crud(client):
