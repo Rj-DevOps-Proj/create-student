@@ -52,7 +52,7 @@ def test_service_health(client):
     response = client.get("/health")
     assert response.status_code == 200
     assert response.get_json()["status"] == "ok"
-    assert response.get_json()["service"] == "students"
+    assert response.get_json()["service"] == "Create Student Service"
 
 
 def test_cors_allows_local_frontend_development_port(client):
